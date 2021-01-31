@@ -1,9 +1,9 @@
-unit bc_litedb_blob;
+unit new_litedb_blob;
 {$mode objfpc}{$H+}
 {$define new_blob_code} { 26.04.2020 /bc refactored code }
 interface
 uses
-  Classes, SysUtils, db, sqldb, sqlite3conn;
+  Classes, SysUtils, db, sqldb, sqlite3conn,lists;
 
 const
   {$ifdef new_blob_code}
@@ -28,7 +28,7 @@ type
   { *** ILiteDb *** }
 
   { ILiteDb }
-
+  {$interfaces corba}
   ILiteDb = interface [SLiteDbGUID]
   { private }
     function get_Connected: boolean;             { private }
@@ -56,6 +56,7 @@ type
     property LastError: ptruint read get_LastError; { 05.06.2020 /bc }
     property LastErrorDesc: string read get_LastErrorDesc; { 05.06.2020 /bc }
   end;
+  {$interfaces com}
   { *** TLiteDb *** }
 
   { TLiteDb }
@@ -86,7 +87,7 @@ type
     constructor Create(const aDatabaseName: string); overload;
     destructor Destroy; override;
     function Connect(const aFilename: string): boolean; overload;
-    function Connect: boolean; overload; { 08.06.2012 /bc }
+    function Connect: boolean; overload;                  { 08.06.2012 /bc }
     procedure DisConnect;
     procedure RunSQL(const aStatement: string); { writing: insert, update & delete }
     function QuerySQL(const aStatement: string; aMemDataSet: TDataset): boolean; { reading: select }
