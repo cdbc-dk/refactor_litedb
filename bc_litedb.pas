@@ -1,11 +1,11 @@
-unit new_litedb;
+unit bc_litedb;
 {************************************************
 *                                               *
 * A lightweight database connection for SQLite3 *
 * Wraps a TSQLite3Connection, TSQLTransaction   *
 * and a TSQLQuery all into one.                 *
-* BEWARE NO BLOBS!                              *
-* Revision 2.21.01.2021 /bc                     *
+*                                               *
+* Revision 3.31.01.2021 /bc                     *
 *                                               *
 ************************************************}
 {$mode objfpc}{$H+}
@@ -16,7 +16,7 @@ uses
   Classes, SysUtils, db, sqldb, sqlite3conn;
 
 const
-  cLiteDb_Version = '2.31.01.2021';
+  cLiteDb_Version = '3.31.01.2021';
   { lasterror constants }
   LE_OK       = 0;
   LE_NODBNAME = 1;
